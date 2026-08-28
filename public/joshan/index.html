@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173c35">
+  <link rel="icon" href="app-icon.png">
+  <title>همراه جوشن</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="date.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="translation.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark">یا</div>
+      <div><h1>همراه جوشن</h1><p>ختم روزانه دعای جوشن کبیر</p></div>
+      <button id="notifyButton" class="ghost">فعال‌کردن یادآوری</button>
+    </header>
+
+    <section id="setupView" class="view">
+      <div class="hero">
+        <span class="eyebrow">یک قرار آرام، هر روز</span>
+        <h2>ختم تازه‌ای آغاز کنیم</h2>
+        <p>نوع ختم را انتخاب کنید؛ برنامه سهم هر روز را از میان ۱۰۰ فراز می‌سازد.</p>
+      </div>
+
+      <form id="planForm" class="panel form-grid">
+        <fieldset class="mode-picker">
+          <legend>نوع ختم</legend>
+          <label><input type="radio" name="mode" value="personal" checked><span><b>ختم شخصی</b><small>برنامه و پیشرفت مخصوص خود شماست</small></span></label>
+          <label><input type="radio" name="mode" value="group"><span><b>ختم گروهی</b><small>فرازها میان اعضای گروه تقسیم می‌شود</small></span></label>
+        </fieldset>
+
+        <label>نام ختم<input id="planName" required value="ختم جوشن من" maxlength="40"></label>
+        <label class="date-field">تاریخ شروع (شمسی)
+          <span class="date-selects">
+            <select id="jDay" aria-label="روز"></select>
+            <select id="jMonth" aria-label="ماه"></select>
+            <select id="jYear" aria-label="سال"></select>
+          </span>
+          <small id="hijriEquivalent" class="date-equivalent"></small>
+        </label>
+        <label>تعداد فراز روزانه<input id="dailyCount" type="number" min="1" max="100" value="5" required></label>
+        <label>زمان یادآوری
+          <span class="time-selects">
+            <select id="reminderHour" aria-label="ساعت"></select>
+            <span id="automaticPeriod" class="automatic-period">شب</span>
+          </span>
+          <small class="date-equivalent">عنوان بازه به‌صورت خودکار تعیین می‌شود</small>
+        </label>
+        <label id="membersField" class="hidden">تعداد اعضا<input id="memberCount" type="number" min="2" max="100" value="5"></label>
+
+        <div class="summary" id="planSummary"></div>
+        <button class="primary wide" type="submit">ساخت برنامه ختم</button>
+      </form>
+    </section>
+
+    <section id="dashboardView" class="view hidden">
+      <div class="dashboard-head">
+        <div><span id="modeBadge" class="badge"></span><h2 id="dashboardTitle"></h2><p id="todayLabel"></p></div>
+        <button id="resetButton" class="ghost danger">ختم تازه</button>
+      </div>
+
+      <div class="stats">
+        <article><span>پیشرفت</span><strong id="progressText">۰٪</strong></article>
+        <article><span>خوانده‌شده</span><strong id="readCount">۰ از ۱۰۰</strong></article>
+        <article><span>یادآوری</span><strong id="timeText">۲۱:۰۰</strong></article>
+      </div>
+
+      <div class="progress-track"><span id="progressBar"></span></div>
+
+      <section class="panel today-card">
+        <div><span class="eyebrow">سهم امروز</span><h3 id="portionTitle"></h3><p id="portionMeta"></p></div>
+        <button id="readButton" class="primary">شروع قرائت</button>
+      </section>
+
+      <section id="reader" class="panel reader hidden">
+        <div class="reader-head"><span id="verseNumber"></span><button id="closeReader" class="icon-button">×</button></div>
+        <p id="verseText" class="arabic"></p>
+        <div class="translation-divider"><span>ترجمهٔ فارسی</span></div>
+        <p id="translationText" class="translation"></p>
+        <div class="refrain-divider"><span>ذکر پایانی فراز</span></div>
+        <p id="refrainText" class="arabic refrain"></p>
+        <div class="reader-actions"><button id="prevVerse" class="ghost">فراز قبل</button><button id="completeVerse" class="primary">خواندم</button><button id="nextVerse" class="ghost">فراز بعد</button></div>
+      </section>
+
+      <section class="panel">
+        <div class="section-title"><h3>نقشه ۱۰۰ فراز</h3><span>هر خانه یک فراز</span></div>
+        <div id="verseGrid" class="verse-grid"></div>
+      </section>
+
+      <section id="groupMembersSection" class="panel group-members hidden">
+        <div class="section-title">
+          <div><h3>اعضای ختم گروهی</h3><p>هر عضو می‌تواند بازهٔ دلخواه خود را از میان ۱۰۰ فراز انتخاب کند.</p></div>
+          <span id="assignmentStatus" class="assignment-status"></span>
+        </div>
+        <div class="member-columns" aria-hidden="true"><span>نام عضو</span><span>از فراز</span><span>تا فراز</span><span>سهم</span></div>
+        <div id="membersList" class="members-list"></div>
+      </section>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="dua-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

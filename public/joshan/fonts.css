@@ -1,0 +1,26 @@
+@font-face{
+  font-family:"App Nazanin";
+  src:local("B Nazanin"),local("BNazanin");
+  font-style:normal;
+  font-weight:normal;
+}
+@font-face{
+  font-family:"App Mitra";
+  src:local("B Mitra"),local("BMitra");
+  font-style:normal;
+  font-weight:normal;
+}
+body,button,input,select,textarea{
+  font-family:"App Nazanin","B Nazanin",Tahoma,sans-serif!important;
+  font-size:18px;
+}
+h1,h2,h3,h4,h5,h6,.brand-mark,.today-card h3,.dashboard-head h2,.hero h2{
+  font-family:"App Mitra","B Mitra","App Nazanin",Tahoma,sans-serif!important;
+  font-weight:normal;
+}
+.topbar h1{font-size:27px}
+.hero h2{font-size:45px}
+.dashboard-head h2{font-size:39px}
+.today-card h3{font-size:30px}
+.arabic{font-family:"App Nazanin","B Nazanin","Traditional Arabic",serif!important;font-size:31px}
+small,.eyebrow,.badge,.topbar p,.stats span,.section-title span{font-size:15px}
