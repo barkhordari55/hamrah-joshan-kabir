@@ -1,0 +1,50 @@
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-y: auto;
+}
+
+.app-shell {
+  width: 100%;
+}
+
+.verse-grid {
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+}
+
+.verse {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+}
+
+@media (max-width: 650px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .verse-grid {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .verse {
+    font-size: 13px;
+  }
+
+  .section-title {
+    gap: 10px;
+  }
+
+  .section-title span {
+    white-space: nowrap;
+  }
+}
