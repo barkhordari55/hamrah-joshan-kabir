@@ -1,0 +1,17 @@
+{
+  "name": "همراه جوشن کبیر",
+  "short_name": "جوشن کبیر",
+  "description": "ختم روزانه و گروهی دعای جوشن کبیر همراه با ترجمه فارسی",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#eaf7f4",
+  "theme_color": "#086b69",
+  "lang": "fa",
+  "dir": "rtl",
+  "icons": [
+    { "src": "/app-icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" },
+    { "src": "/app-icon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "maskable" }
+  ]
+}
