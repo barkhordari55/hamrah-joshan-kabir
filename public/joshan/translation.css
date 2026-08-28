@@ -1,0 +1,3 @@
+.translation-divider{display:flex;align-items:center;gap:12px;color:#0e8580;font-size:14px;margin:12px 0}
+.translation-divider:before,.translation-divider:after{content:"";height:1px;background:#b9ded8;flex:1}
+.translation{font-family:"App Nazanin","B Nazanin",Tahoma,sans-serif;font-size:20px;line-height:2;color:#365f5a;background:#effaf7;border-radius:16px;padding:16px 20px;text-align:right}
